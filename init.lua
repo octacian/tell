@@ -49,3 +49,23 @@ function tell.remove(name, id)
     list[name][id] = nil
   end
 end
+
+-- [register] Chatcommand
+minetest.register_chatcommand("tell", {
+  description = "Send a message to an offline or AFK player",
+  params = "<name> <message>",
+  func = function(name, param)
+    local sendto, msg = param:match("^(%S+)%s(.+)$")
+    if not sendto or not msg then
+      return false, "Invalid usage, see /help tell."
+    end
+    minetest.log("action", "Tell from " .. name .. " to " .. sendto
+        .. ": " .. msg)
+
+    if tell.add(sendto, name, msg) then
+      return true, "I'll pass that on when "..sendto.." is around."
+    else
+      return false, "Unknown error."
+    end
+  end,
+})
