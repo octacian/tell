@@ -1,0 +1,6 @@
+It happens all the time, you join a server needing to tell someone something, but they aren't online.
+Sure, some servers have an email/mailbox system, but for many, such systems are overly complex and therefore not available.
+That's why I made tell.
+
+Forum: https://forum.minetest.net/viewtopic.php?f=9&t=17164
+GitHub: https://github.com/octacian/tell
