@@ -1,5 +1,7 @@
+![Screenshot](.gh-screenshot.png)
+
 Message offline players [tell]
-==============================
+================================
 * License: MIT (see [LICENSE](https://github.com/octacian/tell/blob/master/LICENSE))
 * [Download Latest](https://github.com/octacian/tell/archive/master.zip)
 
