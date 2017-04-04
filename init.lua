@@ -4,6 +4,12 @@ tell = {}
 
 local list = {}
 
+-- Choose command name
+local name = "tell"
+if minetest.get_modpath("mesecons_commandblock") then
+  name = "tellafk"
+end
+
 -- [local function] Load
 local function load()
   local res = io.open(minetest.get_worldpath().."/tell.txt", "r")
@@ -64,7 +70,7 @@ function tell.show(name)
 end
 
 -- [register] Chatcommand
-minetest.register_chatcommand("tell", {
+minetest.register_chatcommand(name, {
   description = "Send a message to an offline or AFK player",
   params = "<name> <message>",
   func = function(name, param)
