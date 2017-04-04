@@ -69,3 +69,18 @@ minetest.register_chatcommand("tell", {
     end
   end,
 })
+
+-- [register] On join player
+minetest.register_on_joinplayer(function(player)
+  local name = player:get_player_name()
+
+  if list and list[name] then
+    for _, i in ipairs(list[name]) do
+      minetest.chat_send_player(name, minetest.colorize("#ff5400", "Message from "
+        ..i.from.." at "..i.time..": "..i.msg))
+
+      -- Remove entry
+      tell.remove(name, _)
+    end
+  end
+end)
