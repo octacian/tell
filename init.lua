@@ -88,3 +88,8 @@ minetest.register_on_joinplayer(function(player)
   local name = player:get_player_name()
   tell.show(name)
 end)
+
+-- [register] On chat message
+minetest.register_on_chat_message(function(name)
+  tell.show(name)
+end)
