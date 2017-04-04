@@ -50,6 +50,19 @@ function tell.remove(name, id)
   end
 end
 
+-- [function] Show messages
+function tell.show(name)
+  if list and list[name] then
+    for _, i in ipairs(list[name]) do
+      minetest.chat_send_player(name, minetest.colorize("#ff5400", "Message from "
+        ..i.from.." at "..i.time..": "..i.msg))
+
+      -- Remove entry
+      tell.remove(name, _)
+    end
+  end
+end
+
 -- [register] Chatcommand
 minetest.register_chatcommand("tell", {
   description = "Send a message to an offline or AFK player",
@@ -73,14 +86,5 @@ minetest.register_chatcommand("tell", {
 -- [register] On join player
 minetest.register_on_joinplayer(function(player)
   local name = player:get_player_name()
-
-  if list and list[name] then
-    for _, i in ipairs(list[name]) do
-      minetest.chat_send_player(name, minetest.colorize("#ff5400", "Message from "
-        ..i.from.." at "..i.time..": "..i.msg))
-
-      -- Remove entry
-      tell.remove(name, _)
-    end
-  end
+  tell.show(name)
 end)

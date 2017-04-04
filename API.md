@@ -1,6 +1,6 @@
 Tell API
 ========
-Tell has a very simple API composed of two functions for use by other mods.
+Tell has a very simple API composed of three functions for use by other mods.
 
 `tell.add(name, from, msg)`
 
@@ -14,3 +14,8 @@ Tell has a very simple API composed of two functions for use by other mods.
 * Removes a message
 * `name`: Name of recipient (not `userdata`)
 * `id`: Numerical ID of the message (returned by `tell.add`)
+
+`tell.show(name)`
+
+* Shows all messages for the specified player
+* `name`: Name of player (not `userdata`)
