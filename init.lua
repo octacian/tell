@@ -5,9 +5,9 @@ tell = {}
 local list = {}
 
 -- Choose command name
-local name = "tell"
+local commandname = "tell"
 if minetest.get_modpath("mesecons_commandblock") then
-  name = "tellafk"
+  commandname = "tellafk"
 end
 
 -- [local function] Load
@@ -70,13 +70,13 @@ function tell.show(name)
 end
 
 -- [register] Chatcommand
-minetest.register_chatcommand(name, {
+minetest.register_chatcommand(commandname, {
   description = "Send a message to an offline or AFK player",
   params = "<name> <message>",
   func = function(name, param)
     local sendto, msg = param:match("^(%S+)%s(.+)$")
     if not sendto or not msg then
-      return false, "Invalid usage, see /help tell."
+      return false, "Invalid usage, see /help " .. commandname .. "."
     end
     minetest.log("action", "Tell from " .. name .. " to " .. sendto
         .. ": " .. msg)
